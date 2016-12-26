@@ -16,10 +16,15 @@ func main() {
 	Connect ot Server
 	 */
 	// Resolve IP addr
-	ip, err := net.ResolveTCPAddr("tcp", TARGET_HOST + ":" + TARGET_PORT)
+	tcpAddr, err := net.ResolveTCPAddr("tcp", TARGET_HOST + ":" + TARGET_PORT)
 	checkError(err)
 
-	fmt.Println(ip)
+	fmt.Println(tcpAddr.IP)
+	fmt.Println(tcpAddr.Port)
+
+	conn, err := net.Dial("tcp",tcpAddr.IP + tcpAddr.Port)
+	checkError(err)
+	defer conn.Close()
 
 	// Senda data
 
