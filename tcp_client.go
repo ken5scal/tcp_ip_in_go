@@ -16,7 +16,7 @@ func main() {
 	Connect ot Server
 	 */
 	// Resolve IP addr
-	ip, err := net.ResolveIPAddr("ip", TARGET_HOST)
+	ip, err := net.ResolveTCPAddr("tcp", TARGET_HOST + ":" + TARGET_PORT)
 	checkError(err)
 
 	fmt.Println(ip)
