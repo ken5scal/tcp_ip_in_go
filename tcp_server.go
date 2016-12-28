@@ -8,10 +8,10 @@ import (
 )
 
 var BIND_IP = "127.0.0.1"
-var BIND_PORT = ":8080"
+var BIND_PORT = "8080"
 
 func main() {
-	tcpAddr, err := net.ResolveTCPAddr("ip4", BIND_IP + ":" + BIND_PORT)
+	tcpAddr, err := net.ResolveTCPAddr("tcp", BIND_IP + ":" + BIND_PORT)
 	checkServerError(err)
 
 	ln, err := net.ListenTCP("tcp", tcpAddr)
