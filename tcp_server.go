@@ -4,23 +4,31 @@ import (
 	"net"
 	"fmt"
 	"os"
+	"time"
 )
 
 var BIND_IP = "127.0.0.1"
 var BIND_PORT = ":8080"
 
 func main() {
-	ln, err := net.Listen("tcp", BIND_IP+BIND_PORT)
+	tcpAddr, err := net.ResolveTCPAddr("ip4", BIND_IP + ":" + BIND_PORT)
 	checkServerError(err)
+
+	ln, err := net.ListenTCP("tcp", tcpAddr)
 	for {
 		conn, err := ln.Accept()
-		checkServerError(err)
+		if err != nil {
+			continue
+		}
+
 		go handleConnection(conn)
 	}
 }
 
 func handleConnection(c net.Conn) {
-
+	defer c.Close()
+	daytime := time.Now().String()
+	c.Write([]byte(daytime))
 }
 
 func checkServerError(err error) {
