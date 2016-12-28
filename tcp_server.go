@@ -10,7 +10,7 @@ var BIND_IP = "127.0.0.1"
 var BIND_PORT = ":8080"
 
 func main() {
-	ln, err := net.Listen("tcp", BIND_PORT)
+	ln, err := net.Listen("tcp", BIND_IP+BIND_PORT)
 	checkServerError(err)
 	for {
 		conn, err := ln.Accept()
