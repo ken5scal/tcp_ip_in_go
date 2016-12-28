@@ -18,10 +18,10 @@ func main() {
 	Connect ot Server
 	 */
 	// Resolve IP addr
-	tcpAddr, err := net.ResolveTCPAddr("tcp", TARGET_HOST + ":" + TARGET_PORT)
-	checkError(err)
+	//tcpAddr, err := net.ResolveTCPAddr("tcp", TARGET_HOST + ":" + TARGET_PORT)
+	//checkError(err)
 
-	conn, err := net.DialTCP("tcp", nil, tcpAddr)
+	conn, err := net.Dial("tcp", TARGET_HOST + ":" + TARGET_PORT)
 	checkError(err)
 	defer conn.Close()
 	conn.SetWriteDeadline(time.Now().Add(time.Minute))
