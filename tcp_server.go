@@ -3,7 +3,6 @@ package main
 import (
 	"net"
 	"fmt"
-	"os"
 	"github.com/labstack/gommon/log"
 )
 
