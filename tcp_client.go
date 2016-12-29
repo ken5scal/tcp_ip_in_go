@@ -6,6 +6,7 @@ import (
 	"os"
 	"time"
 	"io/ioutil"
+	"log"
 )
 
 var TARGET_HOST = "www.google.co.jp"
@@ -42,7 +43,6 @@ func main() {
 
 func checkError(err error) {
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Fatal Error: %v", err.Error())
-		os.Exit(1)
+		log.Fatal(err)
 	}
 }

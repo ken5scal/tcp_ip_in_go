@@ -4,6 +4,7 @@ import (
 	"net"
 	"fmt"
 	"os"
+	"github.com/labstack/gommon/log"
 )
 
 var BIND_IP = "127.0.0.1"
@@ -46,7 +47,6 @@ func handleConnection(c net.Conn) {
 
 func checkServerError(err error) {
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Fatal Error: %v", err.Error())
-		os.Exit(1)
+		log.Fatal(err)
 	}
 }
